@@ -1,0 +1,166 @@
+--------------------------------------------
+   Hyprland Crash Report
+--------------------------------------------
+I tried so hard, and got so far...
+
+Hyprland received signal 6(ABRT)
+Version: 29e2e59fdbab8ed2cc23a20e3c6043d5decb5cdc
+Tag: v0.48.1
+Date: Fri Mar 28 16:16:07 2025
+Flags:
+
+System info:
+	System name: Linux
+	Node name: Arch
+	Release: 6.14.2-arch1-1
+	Version: #1 SMP PREEMPT_DYNAMIC Thu, 10 Apr 2025 18:43:59 +0000
+
+GPU:
+	01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD106M [GeForce RTX 4070 Max-Q / Mobile] [10de:2860] (rev a1) (prog-if 00 [VGA controller])
+
+
+os-release:
+	NAME="Arch Linux"
+	PRETTY_NAME="Arch Linux"
+	ID=arch
+	BUILD_ID=rolling
+	ANSI_COLOR="38;2;23;147;209"
+	HOME_URL="https://archlinux.org/"
+	DOCUMENTATION_URL="https://wiki.archlinux.org/"
+	SUPPORT_URL="https://bbs.archlinux.org/"
+	BUG_REPORT_URL="https://gitlab.archlinux.org/groups/archlinux/-/issues"
+	PRIVACY_POLICY_URL="https://terms.archlinux.org/docs/privacy-policy/"
+	LOGO=archlinux-logo
+Backtrace:
+	# | Hyprland(_Z12getBacktracev+0x61) [0x59ef8a2fcd61]
+		getBacktrace()
+		??:?
+	#1 | Hyprland(_ZN14NCrashReporter18createAndSaveCrashEi+0xb90) [0x59ef8a26a540]
+		NCrashReporter::createAndSaveCrash(int)
+		??:?
+	#2 | Hyprland(+0x1de4c8) [0x59ef8a1f64c8]
+		CCompositor::getMonitorFromCursor()
+		??:?
+	#3 | /usr/lib/libc.so.6(+0x3dcd0) [0x7d25e2a4bcd0]
+		??
+		??:0
+	#4 | /usr/lib/libc.so.6(+0x97624) [0x7d25e2aa5624]
+		??
+		??:0
+	#5 | /usr/lib/libc.so.6(gsignal+0x20) [0x7d25e2a4bba0]
+		??
+		??:0
+	#6 | Hyprland(_ZN15CHyprOpenGLImpl5beginEN9Hyprutils6Memory14CSharedPointerI8CMonitorEERKNS0_4Math7CRegionEP12CFramebufferSt8optionalIS6_E+0x8c0) [0x59ef8a5901c0]
+		CHyprOpenGLImpl::begin(Hyprutils::Memory::CSharedPointer<CMonitor>, Hyprutils::Math::CRegion const&, CFramebuffer*, std::optional<Hyprutils::Math::CRegion>)
+		??:?
+	#7 | Hyprland(_ZN13CHyprRenderer11beginRenderEN9Hyprutils6Memory14CSharedPointerI8CMonitorEERNS0_4Math7CRegionE11eRenderModeNS2_I9IHLBufferEEP12CFramebufferb+0x697) [0x59ef8a5b9f97]
+		CHyprRenderer::beginRender(Hyprutils::Memory::CSharedPointer<CMonitor>, Hyprutils::Math::CRegion&, eRenderMode, Hyprutils::Memory::CSharedPointer<IHLBuffer>, CFramebuffer*, bool)
+		??:?
+	#8 | Hyprland(_ZN13CHyprRenderer13renderMonitorEN9Hyprutils6Memory14CSharedPointerI8CMonitorEE+0x860) [0x59ef8a5adeb0]
+		CHyprRenderer::renderMonitor(Hyprutils::Memory::CSharedPointer<CMonitor>)
+		??:?
+	#9 | Hyprland(_ZN8CMonitor14onMonitorFrameEv+0x578) [0x59ef8a30e8e8]
+		CMonitor::onMonitorFrame()
+		??:?
+	#1 | Hyprland(+0x2f6ad9) [0x59ef8a30ead9]
+		CMonitor::onMonitorFrame()
+		??:?
+	#11 | /usr/lib/libhyprutils.so.5(_ZN9Hyprutils6Signal15CSignalListener4emitESt3any+0x5f) [0x7d25e36bfb7f]
+		??
+		??:0
+	#12 | /usr/lib/libhyprutils.so.5(_ZN9Hyprutils6Signal7CSignal4emitESt3any+0x1df) [0x7d25e36bfedf]
+		??
+		??:0
+	#13 | /usr/lib/libaquamarine.so.7(+0xb0ca7) [0x7d25e37b9ca7]
+		??
+		??:0
+	#14 | /usr/lib/libaquamarine.so.7(_ZN10Aquamarine8CBackend12dispatchIdleEv+0x1a1) [0x7d25e377f351]
+		??
+		??:0
+	#15 | Hyprland(+0x3b843a) [0x59ef8a3d043a]
+		std::any::_Manager_internal<Hyprutils::Memory::CSharedPointer<CIdleInhibitor> >::_S_manage(std::any::_Op, std::any const*, std::any::_Arg*)
+		??:?
+	#16 | /usr/lib/libwayland-server.so.0(wl_event_loop_dispatch+0x1f2) [0x7d25e35b6112]
+		??
+		??:0
+	#17 | /usr/lib/libwayland-server.so.0(wl_display_run+0x37) [0x7d25e35b81f7]
+		??
+		??:0
+	#18 | Hyprland(_ZN17CEventLoopManager9enterLoopEv+0x1b5) [0x59ef8a3d2eb5]
+		CEventLoopManager::enterLoop()
+		??:?
+	#19 | Hyprland(main+0xd82) [0x59ef8a19d1b2]
+		main
+		??:?
+	#2 | /usr/lib/libc.so.6(+0x27488) [0x7d25e2a35488]
+		??
+		??:0
+	#21 | /usr/lib/libc.so.6(__libc_start_main+0x8c) [0x7d25e2a3554c]
+		??
+		??:0
+	#22 | Hyprland(_start+0x25) [0x59ef8a1f2465]
+		_start
+		??:?
+
+
+Log tail:
+
+[LOG] [AQ] [libinput] event10 - debounce state: DEBOUNCE_STATE_IS_UP_DETECTING_SPURIOUS → DEBOUNCE_EVENT_TIMEOUT_SHORT → DEBOUNCE_STATE_IS_UP_WAITING
+
+[LOG] [AQ] [libinput] event10 - debounce state: DEBOUNCE_STATE_IS_UP_WAITING → DEBOUNCE_EVENT_TIMEOUT → DEBOUNCE_STATE_IS_UP
+
+[LOG] [CWLSeatProtocol] New seat resource bound at 59efb401ae50
+[LOG] [CWLDataDeviceProtocol] New datamgr resource bound at 59efb3b1fb00
+[LOG] [CXDGShellProtocol] New xdg_wm_base at 59efb40802c0
+[LOG] [CDataDeviceWLRProtocol] New wlr_data_control_manager at 59efb3ed17f0
+[LOG] [CPrimarySelectionProtocol] New primary_seletion_manager at 59efb3ea0d30
+[LOG] [CWLRDataControlManagerResource] New wlr data device bound at 59efb39b6e30
+[LOG] [CWLRDataControlManagerResource] New wlr data source bound at 59efb405f0b0
+[LOG] [CWLRDataDevice] wlr manager requests selection to 59efb405f0b0
+[LOG] [CWLDataDeviceProtocol] New selection for data source 59efb405f0b0
+[LOG] [CWLDataDeviceProtocol] New wayland offer 59efb3de62f0 for data source 59efb405f0b0
+[LOG] [CWLDataOfferResource]  | offer 59efb3de62f0 supports mime text/plain
+[LOG] [CWLDataOfferResource]  | offer 59efb3de62f0 supports mime text/plain
+[LOG] [CWLDataOfferResource]  | offer 59efb3de62f0 supports mime text/plain;charset=utf-8
+[LOG] [CWLDataOfferResource]  | offer 59efb3de62f0 supports mime TEXT
+[LOG] [CWLDataOfferResource]  | offer 59efb3de62f0 supports mime STRING
+[LOG] [CWLDataOfferResource]  | offer 59efb3de62f0 supports mime UTF8_STRING
+[LOG] [CDataDeviceWLRProtocol] New selection for data source 59efb405f0b0
+[LOG] [CDataDeviceWLRProtocol] New  offer 59efb3fca240 for data source 59efb405f0b0
+[LOG] [CDataDeviceWLRProtocol] New  offer 59efb3bdef20 for data source 59efb405f0b0
+[LOG] [CWLRDataOffer] Offer 59efb3fca240 asks to send data from source 59efb405f0b0
+[LOG] cursorImage request: surface 0
+[LOG] cursorImage request: shape 1 -> default
+[LOG] Searching for matching rules for kitty (title: nvim)
+[LOG] [CWLDataDeviceProtocol] New wayland offer 59efb3f8fd80 for data source 59efb405f0b0
+[LOG] [CWLDataOfferResource]  | offer 59efb3f8fd80 supports mime text/plain
+[LOG] [CWLDataOfferResource]  | offer 59efb3f8fd80 supports mime text/plain
+[LOG] [CWLDataOfferResource]  | offer 59efb3f8fd80 supports mime text/plain;charset=utf-8
+[LOG] [CWLDataOfferResource]  | offer 59efb3f8fd80 supports mime TEXT
+[LOG] [CWLDataOfferResource]  | offer 59efb3f8fd80 supports mime STRING
+[LOG] [CWLDataOfferResource]  | offer 59efb3f8fd80 supports mime UTF8_STRING
+[LOG] Set keyboard focus to surface 59efb40136a0, with [Window 59efb4046e80: title: "Hyprland NVIDIA freeze debug — Mozilla Firefox"]
+[LOG] Searching for matching rules for firefox (title: Hyprland NVIDIA freeze debug — Mozilla Firefox)
+[LOG] [CXDGSurfaceResource] xdg_surface 59efb3e6e2c0 requests geometry 0x0 1250x1359
+[LOG] cursorImage request: shape 1 -> default
+[LOG] [CXDGSurfaceResource] xdg_surface 59efb3b92190 requests geometry 0x0 1250x1359
+[LOG] cursorImage request: shape 26 -> ew-resize
+[LOG] cursorImage request: shape 1 -> default
+[LOG] cursorImage request: shape 4 -> pointer
+[LOG] cursorImage request: shape 1 -> default
+[LOG] cursorImage request: shape 9 -> text
+[LOG] cursorImage request: shape 1 -> default
+[LOG] cursorImage request: shape 4 -> pointer
+[LOG] cursorImage request: shape 1 -> default
+[LOG] cursorImage request: shape 9 -> text
+[LOG] cursorImage request: surface 59efb3e78370
+[LOG] CWLSurface 59efb392b350 called init()
+[LOG] [CWLDataOfferResource] Offer 59efb3f8fd80 accepts data from source 59efb405f0b0 with mime text/plain;charset=utf-8
+[LOG] [CWLDataOfferResource] Offer 59efb3f8fd80 asks to send data from source 59efb405f0b0
+[CRITICAL] 
+==========================================================================================
+ASSERTION FAILED! 
+
+Aborting, glGetGraphicsResetStatus returned GL_GUILTY_CONTEXT_RESET. Cannot continue until proper GPU reset handling is implemented.
+
+at: line 722 in OpenGL.cpp
