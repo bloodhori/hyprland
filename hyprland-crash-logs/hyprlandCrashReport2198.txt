@@ -1,0 +1,163 @@
+--------------------------------------------
+   Hyprland Crash Report
+--------------------------------------------
+All these computers...
+
+Hyprland received signal 6(ABRT)
+Version: 29e2e59fdbab8ed2cc23a20e3c6043d5decb5cdc
+Tag: v0.48.1
+Date: Fri Mar 28 16:16:07 2025
+Flags:
+
+System info:
+	System name: Linux
+	Node name: Arch
+	Release: 6.14.2-arch1-1
+	Version: #1 SMP PREEMPT_DYNAMIC Thu, 10 Apr 2025 18:43:59 +0000
+
+GPU:
+	01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD106M [GeForce RTX 4070 Max-Q / Mobile] [10de:2860] (rev a1) (prog-if 00 [VGA controller])
+
+
+os-release:
+	NAME="Arch Linux"
+	PRETTY_NAME="Arch Linux"
+	ID=arch
+	BUILD_ID=rolling
+	ANSI_COLOR="38;2;23;147;209"
+	HOME_URL="https://archlinux.org/"
+	DOCUMENTATION_URL="https://wiki.archlinux.org/"
+	SUPPORT_URL="https://bbs.archlinux.org/"
+	BUG_REPORT_URL="https://gitlab.archlinux.org/groups/archlinux/-/issues"
+	PRIVACY_POLICY_URL="https://terms.archlinux.org/docs/privacy-policy/"
+	LOGO=archlinux-logo
+Backtrace:
+	# | Hyprland(_Z12getBacktracev+0x61) [0x637ed5874d61]
+		getBacktrace()
+		??:?
+	#1 | Hyprland(_ZN14NCrashReporter18createAndSaveCrashEi+0xb90) [0x637ed57e2540]
+		NCrashReporter::createAndSaveCrash(int)
+		??:?
+	#2 | Hyprland(+0x1de4c8) [0x637ed576e4c8]
+		CCompositor::getMonitorFromCursor()
+		??:?
+	#3 | /usr/lib/libc.so.6(+0x3dcd0) [0x71585ce4bcd0]
+		??
+		??:0
+	#4 | /usr/lib/libc.so.6(+0x97624) [0x71585cea5624]
+		??
+		??:0
+	#5 | /usr/lib/libc.so.6(gsignal+0x20) [0x71585ce4bba0]
+		??
+		??:0
+	#6 | Hyprland(_ZN15CHyprOpenGLImpl5beginEN9Hyprutils6Memory14CSharedPointerI8CMonitorEERKNS0_4Math7CRegionEP12CFramebufferSt8optionalIS6_E+0x8c0) [0x637ed5b081c0]
+		CHyprOpenGLImpl::begin(Hyprutils::Memory::CSharedPointer<CMonitor>, Hyprutils::Math::CRegion const&, CFramebuffer*, std::optional<Hyprutils::Math::CRegion>)
+		??:?
+	#7 | Hyprland(_ZN13CHyprRenderer11beginRenderEN9Hyprutils6Memory14CSharedPointerI8CMonitorEERNS0_4Math7CRegionE11eRenderModeNS2_I9IHLBufferEEP12CFramebufferb+0x697) [0x637ed5b31f97]
+		CHyprRenderer::beginRender(Hyprutils::Memory::CSharedPointer<CMonitor>, Hyprutils::Math::CRegion&, eRenderMode, Hyprutils::Memory::CSharedPointer<IHLBuffer>, CFramebuffer*, bool)
+		??:?
+	#8 | Hyprland(_ZN13CHyprRenderer13renderMonitorEN9Hyprutils6Memory14CSharedPointerI8CMonitorEE+0x860) [0x637ed5b25eb0]
+		CHyprRenderer::renderMonitor(Hyprutils::Memory::CSharedPointer<CMonitor>)
+		??:?
+	#9 | Hyprland(_ZN8CMonitor14onMonitorFrameEv+0x578) [0x637ed58868e8]
+		CMonitor::onMonitorFrame()
+		??:?
+	#1 | Hyprland(+0x2f6ad9) [0x637ed5886ad9]
+		CMonitor::onMonitorFrame()
+		??:?
+	#11 | /usr/lib/libhyprutils.so.5(_ZN9Hyprutils6Signal15CSignalListener4emitESt3any+0x5f) [0x71585daedb7f]
+		??
+		??:0
+	#12 | /usr/lib/libhyprutils.so.5(_ZN9Hyprutils6Signal7CSignal4emitESt3any+0x1df) [0x71585daededf]
+		??
+		??:0
+	#13 | /usr/lib/libaquamarine.so.7(+0xb0ca7) [0x71585dbe7ca7]
+		??
+		??:0
+	#14 | /usr/lib/libaquamarine.so.7(_ZN10Aquamarine8CBackend12dispatchIdleEv+0x1a1) [0x71585dbad351]
+		??
+		??:0
+	#15 | Hyprland(+0x3b843a) [0x637ed594843a]
+		std::any::_Manager_internal<Hyprutils::Memory::CSharedPointer<CIdleInhibitor> >::_S_manage(std::any::_Op, std::any const*, std::any::_Arg*)
+		??:?
+	#16 | /usr/lib/libwayland-server.so.0(wl_event_loop_dispatch+0x1f2) [0x71585d9e4112]
+		??
+		??:0
+	#17 | /usr/lib/libwayland-server.so.0(wl_display_run+0x37) [0x71585d9e61f7]
+		??
+		??:0
+	#18 | Hyprland(_ZN17CEventLoopManager9enterLoopEv+0x1b5) [0x637ed594aeb5]
+		CEventLoopManager::enterLoop()
+		??:?
+	#19 | Hyprland(main+0xd82) [0x637ed57151b2]
+		main
+		??:?
+	#2 | /usr/lib/libc.so.6(+0x27488) [0x71585ce35488]
+		??
+		??:0
+	#21 | /usr/lib/libc.so.6(__libc_start_main+0x8c) [0x71585ce3554c]
+		??
+		??:0
+	#22 | Hyprland(_start+0x25) [0x637ed576a465]
+		_start
+		??:?
+
+
+Log tail:
+
+[LOG] [AQ] [libinput] event10 - debounce state: DEBOUNCE_STATE_IS_UP_WAITING → DEBOUNCE_EVENT_TIMEOUT → DEBOUNCE_STATE_IS_UP
+
+[LOG] [AQ] [libinput] event10 - debounce state: DEBOUNCE_STATE_IS_UP → DEBOUNCE_EVENT_PRESS → DEBOUNCE_STATE_IS_DOWN_WAITING
+
+[LOG] [AQ] [libinput] event10 - debounce state: DEBOUNCE_STATE_IS_DOWN_WAITING → DEBOUNCE_EVENT_TIMEOUT → DEBOUNCE_STATE_IS_DOWN
+
+[LOG] [AQ] [libinput] event10 - debounce state: DEBOUNCE_STATE_IS_DOWN → DEBOUNCE_EVENT_RELEASE → DEBOUNCE_STATE_IS_UP_DETECTING_SPURIOUS
+
+[LOG] [AQ] [libinput] event10 - debounce state: DEBOUNCE_STATE_IS_UP_DETECTING_SPURIOUS → DEBOUNCE_EVENT_TIMEOUT_SHORT → DEBOUNCE_STATE_IS_UP_WAITING
+
+[LOG] [AQ] [libinput] event10 - debounce state: DEBOUNCE_STATE_IS_UP_WAITING → DEBOUNCE_EVENT_TIMEOUT → DEBOUNCE_STATE_IS_UP
+
+[LOG] [CWLSeatProtocol] New seat resource bound at 637f14c9f270
+[LOG] [CScreencopyProtocol] Bound client successfully!
+[LOG] [CWLCompositorResource] New wl_surface with id 3 at 637f152179f0
+[LOG] CWLSurface 637f151efea0 called init()
+[LOG] LayerSurface 637f146a4aa0 (namespace hyprpicker layer 3) created on monitor HDMI-A-1
+[LOG] [CLayerShellProtocol] New wlr_layer_surface 637f146a4aa0
+[LOG] [CWLCompositorResource] New wl_surface with id 18 at 637f152107b0
+[LOG] CWLSurface 637f1523d620 called init()
+[LOG] LayerSurface 637f14c2f850 (namespace hyprpicker layer 3) created on monitor eDP-1
+[LOG] [CLayerShellProtocol] New wlr_layer_surface 637f14c2f850
+[LOG] Framebuffer created, status 36053
+[LOG] Framebuffer created, status 36053
+[LOG] LayerSurface 637f146a4aa0 mapped
+[LOG] [CWLDataDeviceProtocol] CWLDataDeviceProtocol::onKeyboardFocus: cannot send selection to a client without a data_device
+[LOG] Set keyboard focus to surface 637f152179f0
+[LOG] [CPrimarySelectionProtocol] CPrimarySelectionProtocol::updateSelection: cannot send selection to a client without a data_device
+[ERR] [/usr/src/debug/hyprland/Hyprland-0.48.1/src/protocols/core/Compositor.cpp:245] Cannot leave surface 637f15003db0 from HDMI-A-1, client hasn't bound the output
+[LOG] CWLSurface 637f14aa1820 called destroy()
+[WARN] [/usr/src/debug/hyprland/Hyprland-0.48.1/src/protocols/XDGShell.cpp:376] wl_surface destroyed before its xdg_surface role object
+[LOG] [Window 637f151d37d0: title: "ML4W Sidebar", class: com.ml4w.sidebar] unmapped
+[LOG] Framebuffer created, status 36053
+[LOG] On closed window, new focused candidate is [Window 637f1519ccd0: title: "Hyprland NVIDIA freeze debug — Mozilla Firefox"]
+[LOG] Refusing a keyboard focus to a window because of an exclusive ls
+[LOG] Searching for matching rules for firefox (title: Hyprland NVIDIA freeze debug — Mozilla Firefox)
+[LOG] [Window 637f151d37d0: title: "ML4W Sidebar", class: com.ml4w.sidebar] destroyed, queueing.
+[LOG] CWLSurface 637f151bd740 called destroy()
+[LOG] LayerSurface 637f14c2f850 mapped
+[LOG] [CWLDataDeviceProtocol] CWLDataDeviceProtocol::onKeyboardFocus: cannot send selection to a client without a data_device
+[LOG] Set keyboard focus to surface 637f152107b0
+[LOG] [CPrimarySelectionProtocol] CPrimarySelectionProtocol::updateSelection: cannot send selection to a client without a data_device
+[LOG] cursorImage request: shape 8 -> crosshair
+[LOG] Cleanup: destroyed a window
+[LOG] cursorImage request: shape 8 -> crosshair
+[LOG] [CWLDataDeviceProtocol] CWLDataDeviceProtocol::onKeyboardFocus: cannot send selection to a client without a data_device
+[LOG] Set keyboard focus to surface 637f152179f0
+[LOG] [CPrimarySelectionProtocol] CPrimarySelectionProtocol::updateSelection: cannot send selection to a client without a data_device
+[LOG] cursorImage request: shape 8 -> crosshair
+[CRITICAL] 
+==========================================================================================
+ASSERTION FAILED! 
+
+Aborting, glGetGraphicsResetStatus returned GL_GUILTY_CONTEXT_RESET. Cannot continue until proper GPU reset handling is implemented.
+
+at: line 722 in OpenGL.cpp
