@@ -1,0 +1,188 @@
+--------------------------------------------
+   Hyprland Crash Report
+--------------------------------------------
+Vaxry is going to be upset.
+
+Hyprland received signal 6(ABRT)
+Version: 29e2e59fdbab8ed2cc23a20e3c6043d5decb5cdc
+Tag: v0.48.1
+Date: Fri Mar 28 16:16:07 2025
+Flags:
+
+System info:
+	System name: Linux
+	Node name: Arch
+	Release: 6.14.2-arch1-1
+	Version: #1 SMP PREEMPT_DYNAMIC Thu, 10 Apr 2025 18:43:59 +0000
+
+GPU:
+	01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD106M [GeForce RTX 4070 Max-Q / Mobile] [10de:2860] (rev a1) (prog-if 00 [VGA controller])
+
+
+os-release:
+	NAME="Arch Linux"
+	PRETTY_NAME="Arch Linux"
+	ID=arch
+	BUILD_ID=rolling
+	ANSI_COLOR="38;2;23;147;209"
+	HOME_URL="https://archlinux.org/"
+	DOCUMENTATION_URL="https://wiki.archlinux.org/"
+	SUPPORT_URL="https://bbs.archlinux.org/"
+	BUG_REPORT_URL="https://gitlab.archlinux.org/groups/archlinux/-/issues"
+	PRIVACY_POLICY_URL="https://terms.archlinux.org/docs/privacy-policy/"
+	LOGO=archlinux-logo
+Backtrace:
+	# | Hyprland(_Z12getBacktracev+0x61) [0x5e7820153d61]
+		getBacktrace()
+		??:?
+	#1 | Hyprland(_ZN14NCrashReporter18createAndSaveCrashEi+0xb90) [0x5e78200c1540]
+		NCrashReporter::createAndSaveCrash(int)
+		??:?
+	#2 | Hyprland(+0x1de4c8) [0x5e782004d4c8]
+		CCompositor::getMonitorFromCursor()
+		??:?
+	#3 | /usr/lib/libc.so.6(+0x3dcd0) [0x7783e464bcd0]
+		??
+		??:0
+	#4 | /usr/lib/libc.so.6(+0x97624) [0x7783e46a5624]
+		??
+		??:0
+	#5 | /usr/lib/libc.so.6(gsignal+0x20) [0x7783e464bba0]
+		??
+		??:0
+	#6 | Hyprland(_ZN12CFramebuffer5allocEiij+0x465) [0x5e78203d9bb5]
+		CFramebuffer::alloc(int, int, unsigned int)
+		??:?
+	#7 | Hyprland(_ZN13CHyprRenderer18makeWindowSnapshotEN9Hyprutils6Memory14CSharedPointerI7CWindowEE+0x3bd) [0x5e7820413f3d]
+		CHyprRenderer::makeWindowSnapshot(Hyprutils::Memory::CSharedPointer<CWindow>)
+		??:?
+	#8 | Hyprland(_ZN6Events20listener_unmapWindowEPvS0_+0x3b7) [0x5e782014a327]
+		Events::listener_unmapWindow(void*, void*)
+		??:?
+	#9 | Hyprland(+0x2aabeb) [0x5e7820119beb]
+		CWindow::isNotResponding()
+		??:?
+	#1 | /usr/lib/libhyprutils.so.5(_ZN9Hyprutils6Signal15CSignalListener4emitESt3any+0x5f) [0x7783e52e4b7f]
+		??
+		??:0
+	#11 | /usr/lib/libhyprutils.so.5(_ZN9Hyprutils6Signal7CSignal4emitESt3any+0x1df) [0x7783e52e4edf]
+		??
+		??:0
+	#12 | Hyprland(+0x65cbbb) [0x5e78204cbbbb]
+		ud_decode
+		??:?
+	#13 | Hyprland(+0x51b908) [0x5e782038a908]
+		std::any::_Manager_internal<Hyprutils::Memory::CSharedPointer<CXWaylandSurfaceResource> >::_S_manage(std::any::_Op, std::any const*, std::any::_Arg*)
+		??:?
+	#14 | /usr/lib/libhyprutils.so.5(_ZN9Hyprutils6Signal15CSignalListener4emitESt3any+0x5f) [0x7783e52e4b7f]
+		??
+		??:0
+	#15 | /usr/lib/libhyprutils.so.5(_ZN9Hyprutils6Signal7CSignal4emitESt3any+0x1df) [0x7783e52e4edf]
+		??
+		??:0
+	#16 | Hyprland(_ZN18CWLSurfaceResource7destroyEv+0xba) [0x5e782039f37a]
+		CWLSurfaceResource::destroy()
+		??:?
+	#17 | Hyprland(+0x628792) [0x5e7820497792]
+		CWpColorManagerV1::setGetSurface(std::function<void (CWpColorManagerV1*, unsigned int, wl_resource*)>)
+		??:?
+	#18 | /usr/lib/libwayland-server.so.0(+0xaba0) [0x7783e51dbba0]
+		??
+		??:0
+	#19 | /usr/lib/libwayland-server.so.0(wl_client_destroy+0xc2) [0x7783e51dbdd2]
+		??
+		??:0
+	#2 | /usr/lib/libwayland-server.so.0(+0xafda) [0x7783e51dbfda]
+		??
+		??:0
+	#21 | /usr/lib/libwayland-server.so.0(wl_event_loop_dispatch+0x1f2) [0x7783e51db112]
+		??
+		??:0
+	#22 | /usr/lib/libwayland-server.so.0(wl_display_run+0x37) [0x7783e51dd1f7]
+		??
+		??:0
+	#23 | Hyprland(_ZN17CEventLoopManager9enterLoopEv+0x1b5) [0x5e7820229eb5]
+		CEventLoopManager::enterLoop()
+		??:?
+	#24 | Hyprland(main+0xd82) [0x5e781fff41b2]
+		main
+		??:?
+	#25 | /usr/lib/libc.so.6(+0x27488) [0x7783e4635488]
+		??
+		??:0
+	#26 | /usr/lib/libc.so.6(__libc_start_main+0x8c) [0x7783e463554c]
+		??
+		??:0
+	#27 | Hyprland(_start+0x25) [0x5e7820049465]
+		_start
+		??:?
+
+
+Log tail:
+[LOG] [CWLDataOfferResource]  | offer 5e783d859530 supports mime text/plain
+[LOG] Set keyboard focus to surface 5e783da49080, with [Window 5e783daf7a80: title: "Application Not Responding"]
+[LOG] Searching for matching rules for hyprland-dialog (title: Application Not Responding)
+[LOG] Map request dispatched, monitor HDMI-A-1, window pos: [3560.50000, 604.00000], window size: [559.00000, 232.00000]
+[LOG] [CForeignToplevelWlrManager] Newly mapped window 00005e783daf7a80
+[LOG] [CPrimarySelectionProtocol] New offer 5e783d765440 for data source 5e783da80cd0
+[LOG] Searching for matching rules for kitty (title: nvim)
+[LOG] Searching for matching rules for firefox (title: Animations – Hyprland Wiki — Mozilla Firefox)
+[LOG] Searching for matching rules for hyprland-dialog (title: Application Not Responding)
+[LOG] [CPrimarySelectionProtocol] New offer 5e783d445d60 for data source 5e783da80cd0
+[LOG] [CXDGSurfaceResource] xdg_surface 5e783d5c1180 requests geometry 0x0 559x232
+[LOG] [CXDGSurfaceResource] xdg_surface 5e783d5c1180 requests geometry 0x0 559x232
+[ERR] [GLES] Error in call at 125@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 126@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 131@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 132@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 133@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 137@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 140@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 141@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 142@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 125@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 126@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 131@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 132@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 133@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 137@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 131@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 132@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 133@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 137@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 140@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 141@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 142@Texture.cpp: 0x507
+[LOG] [CXDGSurfaceResource] xdg_surface 5e783d5c1180 requests geometry 0x0 559x232
+[LOG] [CXDGSurfaceResource] xdg_surface 5e783d5c1180 requests geometry 0x0 559x232
+[ERR] [GLES] Error in call at 125@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 126@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 131@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 132@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 133@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 137@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 140@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 141@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 142@Texture.cpp: 0x507
+[LOG] cursorImage request: shape 1 -> default
+[LOG] cursorImage request: shape 1 -> default
+[LOG] [CXDGSurfaceResource] xdg_surface 5e783d59b1e0 requests geometry 0x0 1250x1359
+[ERR] [GLES] Error in call at 125@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 126@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 131@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 132@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 133@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 137@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 140@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 141@Texture.cpp: 0x507
+[ERR] [GLES] Error in call at 142@Texture.cpp: 0x507
+[WARN] [/usr/src/debug/hyprland/Hyprland-0.48.1/src/protocols/XDGShell.cpp:376] wl_surface destroyed before its xdg_surface role object
+[LOG] [Window 5e783daf7a80: title: "Application Not Responding", class: hyprland-dialog] unmapped
+[ERR] [GLES] Error in call at 165@Texture.cpp: 0x507
+[CRITICAL] 
+==========================================================================================
+ASSERTION FAILED! 
+
+Framebuffer incomplete, couldn't create! (FB status: 36061, GL Error: 0x507)
+
+at: line 48 in Framebuffer.cpp
